@@ -14,4 +14,10 @@ class Articulo extends Model
     {
         return $this->belongsToMany(Departamento::class);
     }
+
+    public function facturas()
+    {
+        return $this->belongsToMany(Factura::class)
+            ->withPivot('cantidad');
+    }
 }

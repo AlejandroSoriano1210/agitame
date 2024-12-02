@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Generico\Carrito;
-use App\Models\Articulo;
+use App\Models\Factura;
 use Illuminate\Http\Request;
 
-class ArticuloController extends Controller
+class FacturaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('articulos.index', [
-            'articulos' => Articulo::all(),
-            'carrito' => Carrito::carrito(),
-        ]);
+        //
     }
 
     /**
@@ -38,7 +34,7 @@ class ArticuloController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Articulo $articulo)
+    public function show(Factura $factura)
     {
         //
     }
@@ -46,7 +42,7 @@ class ArticuloController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Articulo $articulo)
+    public function edit(Factura $factura)
     {
         //
     }
@@ -54,7 +50,7 @@ class ArticuloController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Articulo $articulo)
+    public function update(Request $request, Factura $factura)
     {
         //
     }
@@ -62,7 +58,7 @@ class ArticuloController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Articulo $articulo)
+    public function destroy(Factura $factura)
     {
         //
     }
