@@ -34,9 +34,24 @@ class CuentaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cuenta $cuenta)
+    public function show(Request $request, Cuenta $cuenta)
     {
-        //
+        $fecha = $request->query('fecha');
+        if (isset($fecha)) {
+            $request->validate([
+                'fecha' => 'date_format:Y-m-d',
+            ]);
+        }
+        $movimientos = $cuenta->movimientos()
+            ->orderBy('created_at');
+        if (isset($fecha)) {
+            $movimientos->whereRaw("to_char(created_at, 'YYYY-MM-DD') = ?", [$fecha]);
+        }
+        return view('cuentas.show', [
+            'cuenta' => $cuenta,
+            'movimientos' => $movimientos->get(),
+            'fecha' => $fecha,
+        ]);
     }
 
     /**

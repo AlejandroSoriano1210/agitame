@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cuenta extends Model
 {
+    private $saldo = null;
+
     /** @use HasFactory<\Database\Factories\CuentaFactory> */
     use HasFactory;
 
@@ -18,5 +20,19 @@ class Cuenta extends Model
     public function movimientos()
     {
         return $this->hasMany(Movimiento::class);
+    }
+
+    public function saldo()
+    {
+        if ($this->saldo === null) {
+            $this->saldo = $this->movimientos()->sum('importe');
+        }
+        return $this->saldo;
+    }
+
+    public function refrescarSaldo()
+    {
+        $this->saldo = null;
+        return $this->saldo();
     }
 }

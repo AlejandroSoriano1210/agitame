@@ -2,6 +2,7 @@
 
 use App\Generico\Carrito;
 use App\Http\Controllers\ArticuloController;
+use App\Http\Controllers\CuentaController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProfileController;
@@ -40,6 +41,7 @@ Route::middleware('auth')->group(function () {
 Route::resource('departamentos', DepartamentoController::class);
 Route::resource('empleados', EmpleadoController::class);
 Route::resource('articulos', ArticuloController::class);
+Route::resource('cuentas', CuentaController::class);
 
 Route::get('/carrito/meter/{articulo}', function (Articulo $articulo) {
     $carrito = Carrito::carrito();
