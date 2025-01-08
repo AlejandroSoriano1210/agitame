@@ -14,4 +14,9 @@ class Empleado extends Model
     {
         return $this->belongsTo(Departamento::class);
     }
+
+    public function imagen()
+    {
+        return $this->morphOne(Imagen::class, 'imaginable');
+    }
 }

@@ -21,4 +21,9 @@ class Departamento extends Model
     {
         return $this->belongsToMany(Articulo::class);
     }
+
+    public function imagen()
+    {
+        return $this->morphOne(Imagen::class, 'imaginable');
+    }
 }
