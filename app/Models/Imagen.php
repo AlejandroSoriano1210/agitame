@@ -12,4 +12,9 @@ class Imagen extends Model
     {
         return $this->morphTo();
     }
+
+    // public function imagen()
+    // {
+    //     return $this->morphOne(Imagen::class, 'imaginable');
+    // }
 }

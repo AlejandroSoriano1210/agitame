@@ -17,7 +17,9 @@ class DepartamentoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'codigo' => fake()->unique()->randomNumber(2),
+            'denominacion' => fake()->company(),
+            'localidad' => fake()->city(),
         ];
     }
 }
