@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empleado;
 use Illuminate\Http\Request;
+use App\Models\Departamento;
 
 class EmpleadoController extends Controller
 {
@@ -22,7 +23,8 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        //
+        $departamentos = Departamento::all();
+        return view('empleados.create', compact('departamentos'));
     }
 
     /**
@@ -30,7 +32,16 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'numero' => 'required|numeric',
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'departamento_id' => 'required|exists:departamentos,id',
+        ]);
+
+        Empleado::create($request->all());
+
+        return redirect()->route('empleados.index')->with('success', 'El empleado se ha creado con éxito');
     }
 
     /**

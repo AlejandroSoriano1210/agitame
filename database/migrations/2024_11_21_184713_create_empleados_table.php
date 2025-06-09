@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellidos');
             $table->foreignId('departamento_id')->constrained();
+            $table->text('acciones')->nullable();
             $table->timestamps();
-            $table->index('departamento_id');
         });
     }
 

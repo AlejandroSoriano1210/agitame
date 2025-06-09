@@ -42,7 +42,7 @@
                                             </a>
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $empleado->apellidos }}
+                                            {{ $empleado->apellido }}
                                         </td>
                                         <td class="px-6 py-4">
                                             <a href="{{ route('departamentos.show', $empleado->departamento) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
